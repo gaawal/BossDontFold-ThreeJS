@@ -1,0 +1,217 @@
+{
+  "retrieved": "2026-10-13",
+  "sources": [
+    {
+      "creator": "Kay Lousberg",
+      "pack": "KayKit Furniture Bits 1.0",
+      "license": "CC0-1.0",
+      "official": "https://kaylousberg.com/game-assets/furniture-bits",
+      "download": "https://github.com/KayKit-Game-Assets/KayKit-Furniture-Bits-1.0",
+      "changes": "Only used glTF models retained, source unchanged."
+    },
+    {
+      "creator": "Quaternius",
+      "pack": "Ultimate Animated Animal Pack",
+      "license": "CC0-1.0",
+      "official": "https://quaternius.com/packs/ultimateanimatedanimals.html",
+      "downloadMirror": "https://github.com/agentkaerf/FreeModels/tree/main/Ultimate%20Animated%20Animals%20-%20July%202021",
+      "changes": "Fox, ShibaInu, Husky, Alpaca. Converted embedded glTF to binary GLB; animations retained."
+    },
+    {
+      "creator": "Google / Adobe",
+      "pack": "Noto Sans SC",
+      "license": "OFL-1.1",
+      "official": "https://github.com/google/fonts/tree/main/ofl/notosanssc",
+      "changes": "Subset of used characters, static weight500, renamed OfficeUISubset, WOFF."
+    },
+    {
+      "creator": "Twitter contributors / jdecked Twemoji",
+      "pack": "Twemoji SVG graphics",
+      "license": "CC-BY-4.0",
+      "official": "https://github.com/jdecked/twemoji",
+      "changes": "Selected SVG graphics unmodified, credit in ASSETS.md."
+    }
+  ],
+  "files": [
+    {
+      "path": "public/icons/1f4e6.svg",
+      "bytes": 1556,
+      "sha256": "35a41947f54c96134d1c364c7eef3d692d3af0be37874a86a94c22bdc6d464bf"
+    },
+    {
+      "path": "public/icons/1f4cb.svg",
+      "bytes": 892,
+      "sha256": "5ca5e373d368aa3fdec96fcc0c23252eb17661aa02b07eb0ed49f2280c5602ea"
+    },
+    {
+      "path": "public/icons/1f3ac.svg",
+      "bytes": 622,
+      "sha256": "a63d5d97190e1857f79c79076b09cd670c2a3974a4c9032a02c7e13255bd9242"
+    },
+    {
+      "path": "public/icons/1f6cd.svg",
+      "bytes": 476,
+      "sha256": "abdefd43489ff1d6efb48eefcb9e16366319aaaa17ac330cd5c71eafe8b0f879"
+    },
+    {
+      "path": "public/icons/1f4b3.svg",
+      "bytes": 1017,
+      "sha256": "369a2f73463f01b0cd5c8329a356b9108d8adf8f85b43d3446a69184853d6dc5"
+    },
+    {
+      "path": "public/icons/1f327.svg",
+      "bytes": 1327,
+      "sha256": "d799b3d98276a4a3f0431c9b8bf83733bc4012ba82afe1cded8bf6a3ceb9ac60"
+    },
+    {
+      "path": "public/icons/1f415.svg",
+      "bytes": 2506,
+      "sha256": "632fc09dba15d0701ede125193205b9f0968ba54927166e851a20c6f431965e2"
+    },
+    {
+      "path": "public/icons/1f510.svg",
+      "bytes": 583,
+      "sha256": "4f573cfd1b1b23cf6d7e929819d29c4c6197add012f2d13307c37924b2ef131c"
+    },
+    {
+      "path": "public/icons/1f43a.svg",
+      "bytes": 2285,
+      "sha256": "4d26cdb3f88ec66e26787a47ca3597c0ad25093aeeac660b8ffa88048b49fc9b"
+    },
+    {
+      "path": "public/icons/1f98a.svg",
+      "bytes": 2153,
+      "sha256": "5b5b42dd21db3a10ad01b079ccd22da94aa5a00a216fcef3052020354f6a5580"
+    },
+    {
+      "path": "public/icons/1f3c6.svg",
+      "bytes": 1237,
+      "sha256": "7510cc92013c2cd6c8271e3435539d9870044945e4a50151a50b18e61ee4ba83"
+    },
+    {
+      "path": "public/icons/1f381.svg",
+      "bytes": 656,
+      "sha256": "05a6562177e8e5f89852e08f7bbd6b62597b35d70c92238fcab4d6674ec76048"
+    },
+    {
+      "path": "public/icons/1f999.svg",
+      "bytes": 1583,
+      "sha256": "4a1765f4c6b434bb74cc8fcf1aff0b2cf71a533d2ff84ec80aaaec4da7a1c438"
+    },
+    {
+      "path": "public/fonts/office-ui.woff",
+      "bytes": 92932,
+      "sha256": "409c0bacceedfb7b2c28af2748e2df43efafde391b65a5884a2412b30b09229c"
+    },
+    {
+      "path": "public/models/furniture/couch_pillows.gltf",
+      "bytes": 3030,
+      "sha256": "d3396c15fc460c5db1e2db95b06bb623140c269369f2e9bc38dc4d3b5807011c"
+    },
+    {
+      "path": "public/models/furniture/table_low.bin",
+      "bytes": 12408,
+      "sha256": "e9f604c5676bfa974d6d1bf45757a11d298ac40e8e7981be29d249936c8339cd"
+    },
+    {
+      "path": "public/models/furniture/furniturebits_texture.png",
+      "bytes": 15605,
+      "sha256": "de62db37a80d1801c3d9eb674890ae04b04469e0c149481a51fa250562c628dc"
+    },
+    {
+      "path": "public/models/furniture/book_set.bin",
+      "bytes": 11576,
+      "sha256": "3aa3fcc774b46c7ffe2b1a3109bf006749163bbb392cfca930b34bfba4b67853"
+    },
+    {
+      "path": "public/models/furniture/cactus_small_A.gltf",
+      "bytes": 3071,
+      "sha256": "4e2d93fb22b7f6097f3726b1fc513647873428224c01b17abdbe79c01c1e959b"
+    },
+    {
+      "path": "public/models/furniture/table_medium.gltf",
+      "bytes": 2973,
+      "sha256": "fd5e5fe8bbf1d3729b6bd725165d58490e9cbd8dd46ce42314b01f20951a302b"
+    },
+    {
+      "path": "public/models/furniture/cactus_medium_A.bin",
+      "bytes": 17536,
+      "sha256": "be9378a1328b82751ac651de9387d7b20db4ffbb5e1c087b0e634a00ebf7cc0f"
+    },
+    {
+      "path": "public/models/furniture/lamp_standing.gltf",
+      "bytes": 3034,
+      "sha256": "ff42a083e688c94948493c441d4db51c7e0736336525b3eed4f4da75825b88b7"
+    },
+    {
+      "path": "public/models/furniture/table_low.gltf",
+      "bytes": 2990,
+      "sha256": "3bf202a3ee70ee95943c26419bd5f540353a16b8b6a0b41449746f85c3319a2a"
+    },
+    {
+      "path": "public/models/furniture/shelf_B_large_decorated.gltf",
+      "bytes": 3069,
+      "sha256": "fc613ad31e07529ad1ec9044a8e7e900821c8636efbd714a3238292326a49fad"
+    },
+    {
+      "path": "public/models/furniture/book_set.gltf",
+      "bytes": 3051,
+      "sha256": "437bfaba3f3413a0b825627a1cb905765a191f4708be51838c9b60c8132cbe61"
+    },
+    {
+      "path": "public/models/furniture/shelf_B_large_decorated.bin",
+      "bytes": 25772,
+      "sha256": "80b560eac9dd1d2750149f96f4845ead4c734f446088975a5c0a1c259dd50611"
+    },
+    {
+      "path": "public/models/furniture/cactus_small_A.bin",
+      "bytes": 9320,
+      "sha256": "43dae3699635f54fb84199b7a998c1144690c3e54d6c3fc3c045c38aa54f7fdc"
+    },
+    {
+      "path": "public/models/furniture/lamp_standing.bin",
+      "bytes": 11648,
+      "sha256": "ee58a9e2776406071c8ac60714f1b4dd7ad83a11848ee24aec77b297c9d535d9"
+    },
+    {
+      "path": "public/models/furniture/table_medium.bin",
+      "bytes": 9328,
+      "sha256": "0e6ba8fd006f673d946979e45487067f4e274be9bbd07816fd371578d2a37518"
+    },
+    {
+      "path": "public/models/furniture/cactus_medium_A.gltf",
+      "bytes": 3072,
+      "sha256": "902c48a87bf8e48a2d72055485eaaeae3aefd91224e5af914aeb42fca99759a8"
+    },
+    {
+      "path": "public/models/furniture/couch_pillows.bin",
+      "bytes": 27632,
+      "sha256": "3157c7ce9717ff69f198f9da0395d7a57e9ab230f2161990f86e21395608cc3e"
+    },
+    {
+      "path": "public/models/animals/Husky.glb",
+      "bytes": 1849832,
+      "sha256": "d5e33b7f9ffc92e5278df5035f86e8749f14c5ff8d9c79a922b2e8c1c906fcec"
+    },
+    {
+      "path": "public/models/animals/ShibaInu.glb",
+      "bytes": 1752268,
+      "sha256": "8302af941f144185c1afbde4ad8cc79358b575311deea23be4fbcd3d367f50a8"
+    },
+    {
+      "path": "public/models/animals/License.txt",
+      "bytes": 364,
+      "sha256": "83d8959f9fc56353ed571fbe2dc52e4bcd64508e2399501cd45ac2ce3df0bf8c"
+    },
+    {
+      "path": "public/models/animals/Alpaca.glb",
+      "bytes": 783988,
+      "sha256": "52b84a93cafb5c51baea724524f3e124f1e2609ae46f6cfcb11419706b0e0871"
+    },
+    {
+      "path": "public/models/animals/Fox.glb",
+      "bytes": 1909976,
+      "sha256": "46c849f445d9ae25b11568b72c09a75ed3e17c79b36c5e8bc58ffadb41812ecf"
+    }
+  ]
+}
