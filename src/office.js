@@ -1,7 +1,6 @@
 import * as THREE from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {mergeGeometries} from 'three/addons/utils/BufferGeometryUtils.js';
-import {clone} from 'three/addons/utils/SkeletonUtils.js';
 import {DESKS,ROLES,employeeStatus,qualification} from './game.js';
 const COLORS={design:0xe8a283,dev:0x91bba4,qa:0x91afcf};
 export class Office {
@@ -11,7 +10,7 @@ export class Office {
   this.renderer=new THREE.WebGLRenderer({antialias:true,alpha:false,powerPreference:'high-performance'});this.renderer.setPixelRatio(Math.min(devicePixelRatio,1.7));this.renderer.shadowMap.enabled=true;this.renderer.shadowMap.type=THREE.PCFSoftShadowMap;this.renderer.outputColorSpace=THREE.SRGBColorSpace;this.renderer.toneMapping=THREE.ACESFilmicToneMapping;this.renderer.toneMappingExposure=1.15;this.renderer.domElement.className='office-canvas';host.append(this.renderer.domElement);
   this.labelLayer=document.createElement('div');this.labelLayer.className='world-labels';host.append(this.labelLayer);
   // 居中正面观察办公室，避免移动端斜 45° 视角造成角色与工位对应困难。
-  this.camera=new THREE.OrthographicCamera(-8,8,8,-8,.1,100);this.camera.position.set(0,12.5,19);this.camera.lookAt(0,.15,.35);
+  this.camera=new THREE.OrthographicCamera(-8,8,8,-8,.1,100);this.camera.position.set(0,16.5,18);this.camera.lookAt(0,.15,.55);
   this.scene.add(new THREE.HemisphereLight(0xfff6df,0x8a9690,2.1));const sun=new THREE.DirectionalLight(0xffeccf,3.2);sun.position.set(-6,12,4);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);sun.shadow.camera.left=-10;sun.shadow.camera.right=10;sun.shadow.camera.top=10;sun.shadow.camera.bottom=-10;sun.shadow.bias=-.0004;sun.shadow.normalBias=.025;this.scene.add(sun);
   const fill=new THREE.DirectionalLight(0xc5e6ff,1.3);fill.position.set(7,5,-6);this.scene.add(fill);
   this.buildRoom();this.setupPointers();new ResizeObserver(()=>this.resize()).observe(host);this.resize();
@@ -61,17 +60,32 @@ export class Office {
   for(const bucket of buckets.values()){const geo=mergeGeometries(bucket.geometries,false);if(!geo)continue;const mat=new THREE.MeshStandardMaterial({color:0xffffff,vertexColors:true,map:bucket.map,roughness:.85});const mesh=new THREE.Mesh(geo,mat);mesh.castShadow=true;mesh.receiveShadow=true;this.scene.add(mesh);bucket.geometries.forEach(g=>g.dispose());}
   remove.forEach(o=>o.parent.remove(o));
  }
+ createMascot(e,parent){
+  const palette={Fox:[0xd86b24,0xffdfb6,0x49352d],ShibaInu:[0xb9682f,0xffddb7,0x4b362e],Husky:[0xf4f0e8,0x292d31,0x26292d],Alpaca:[0xf6eee4,0xffd8d6,0x4b3a36]}[e.animal]||[0xc88754,0xffdfbd,0x40352f];
+  const [main,light,dark]=palette,mat=c=>this.mat(c,.72),sphere=(r,c,x,y,z,sx=1,sy=1,sz=1)=>{const m=new THREE.Mesh(new THREE.SphereGeometry(r,20,15),mat(c));m.position.set(x,y,z);m.scale.set(sx,sy,sz);m.castShadow=true;m.receiveShadow=true;parent.add(m);return m;};
+  sphere(.28,main,0,.47,0,.9,1.25,.78);sphere(.34,main,0,.94,.01,1,1,.93);sphere(.22,light,0,.90,.255,1.15,.76,.45);
+  sphere(.055,dark,-.115,1.00,.305);sphere(.055,dark,.115,1.00,.305);sphere(.038,dark,0,.90,.345,1.15,.72,.7);
+  sphere(.09,main,-.28,.53,.02,.6,1.25,.65);sphere(.09,main,.28,.53,.02,.6,1.25,.65);sphere(.105,dark,-.12,.18,.02,.65,1.2,.75);sphere(.105,dark,.12,.18,.02,.65,1.2,.75);
+  if(e.animal==='Husky'){
+   sphere(.13,dark,-.21,1.16,0,.9,.9,.55);sphere(.13,dark,.21,1.16,0,.9,.9,.55);sphere(.12,dark,-.13,1.01,.28,.68,.48,.3);sphere(.12,dark,.13,1.01,.28,.68,.48,.3);
+  }else if(e.animal==='Alpaca'){
+   sphere(.13,main,-.17,1.28,0,.48,1.65,.42);sphere(.13,main,.17,1.28,0,.48,1.65,.42);sphere(.065,light,-.17,1.31,.025,.5,1.25,.5);sphere(.065,light,.17,1.31,.025,.5,1.25,.5);
+  }else{
+   sphere(.16,main,-.21,1.20,0,.62,1.15,.45);sphere(.16,main,.21,1.20,0,.62,1.15,.45);sphere(.11,dark,-.21,1.22,.025,.5,.72,.35);sphere(.11,dark,.21,1.22,.025,.5,.72,.35);
+   const tail=sphere(e.animal==='ShibaInu'?.31:.25,main,.33,.48,-.12,.7,e.animal==='ShibaInu'?1.35:1,.55);tail.rotation.z=-.35;
+  }
+  const shirt={design:0xe98668,dev:0x58a679,qa:0x6195cc}[e.role];sphere(.24,shirt,0,.47,.035,.83,.9,.78);
+  return parent;
+ }
  createStaff(e){
-  const g=new THREE.Group();const src=this.models[e.animal];let mixer=null;
-  if(src){const model=clone(src.scene);const b=new THREE.Box3().setFromObject(model),sz=b.getSize(new THREE.Vector3()),center=b.getCenter(new THREE.Vector3());const scale=1.25/Math.max(sz.x,sz.y,sz.z);model.scale.setScalar(scale);model.position.set(-center.x*scale,-b.min.y*scale,-center.z*scale);g.add(model);mixer=new THREE.AnimationMixer(model);const clip=src.animations.find(a=>a.name==='Idle')||src.animations[0];if(clip)mixer.clipAction(clip).play();}
-  else {this.cylinder(.27,.48,0xa5b8a2,0,.3,0,g);const head=new THREE.Mesh(new THREE.SphereGeometry(.29,16,12),this.mat(0xe9c9a6));head.position.y=.7;g.add(head);}
+  const g=new THREE.Group();let mixer=null;this.createMascot(e,g);
   const ring=new THREE.Mesh(new THREE.RingGeometry(.47,.52,36),new THREE.MeshBasicMaterial({color:0x42b9cf,transparent:true,opacity:.95,side:THREE.DoubleSide}));ring.rotation.x=-Math.PI/2;ring.position.y=.035;g.add(ring);ring.visible=false;
   const hit=this.box(.58,.9,.65,0xffffff,0,.45,0,g);hit.visible=false;hit.userData={employee:e.id};this.hitObjects.push(hit);g.traverse(c=>{if(c.isMesh&&c!==ring){c.castShadow=true;c.receiveShadow=true;}});this.scene.add(g);
   const lb=this.label(e.name,[0,1.4,0],'employee-label',()=>this.callbacks.selectEmployee(e.id));lb.el.dataset.employeeId=e.id;const obj={group:g,mixer,ring,label:lb,target:new THREE.Vector3(),id:e.id};this.staff.set(e.id,obj);return obj;
  }
  sync(s){this.state=s;if(!this.assetLoaded)return;let waiting=0;const ids=new Set(s.employees.map(e=>e.id));for(const [id,o] of this.staff)if(!ids.has(id)){this.scene.remove(o.group);o.label.el.remove();this.labels.delete(o.label.el);this.staff.delete(id);this.hitObjects=this.hitObjects.filter(h=>h.userData.employee!==id);}
   for(const e of s.employees){const o=this.staff.get(e.id)||this.createStaff(e);let x,z,y=.08;if((e.leaveUntil>s.day&&s.day>=(e.leaveFrom||0))){x=4.2;z=-3.3;y=.6;}else if(e.training&&!e.training.paused){x=-.3;z=-2.5;}else if(e.mode==='rest'){x=3.5+(waiting++%2)*.5;z=-3.1;y=.65;}else if(e.desk){const d=DESKS.find(d=>d.id===e.desk);x=d.x;z=d.z+.9;y=.52;}else {x=-2.4+(waiting%3)*2.4;z=3.35+Math.floor(waiting/3)*1.05;waiting++;}
-   o.target.set(x,y,z);if(!o.initialized){o.group.position.copy(o.target);o.initialized=true;}o.group.rotation.y=e.desk?Math.PI:0;o.ring.visible=e.id===this.selected;
+   o.target.set(x,y,z);if(!o.initialized){o.group.position.copy(o.target);o.initialized=true;}o.group.rotation.y=0;o.ring.visible=e.id===this.selected;
    const project=s.projects.find(p=>p.id===e.project),task=project?project.name:employeeStatus(s,e);
    o.label.el.innerHTML=`<strong>${e.name}</strong><span>${ROLES[e.role]} · ${task}</span>`;
    o.label.el.classList.toggle('selected',e.id===this.selected);o.label.hidden=false;

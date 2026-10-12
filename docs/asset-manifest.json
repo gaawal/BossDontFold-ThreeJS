@@ -212,6 +212,21 @@
       "path": "public/models/animals/Fox.glb",
       "bytes": 1909976,
       "sha256": "46c849f445d9ae25b11568b72c09a75ed3e17c79b36c5e8bc58ffadb41812ecf"
+    },
+    {
+      "path": "public/icons/1f43f.svg",
+      "bytes": 1827,
+      "sha256": "1b2d9e432ccea3989d41fc52d731e0b0a8aefb21861313c2f7a02951d0d8426b"
+    },
+    {
+      "path": "public/icons/1f43c.svg",
+      "bytes": 1040,
+      "sha256": "f62d0a2b082c192743e4ea6e3ec841c76efb17fe882c068e00d5264e9ad42128"
+    },
+    {
+      "path": "public/icons/1f430.svg",
+      "bytes": 1247,
+      "sha256": "19f213da129217b424595228e6f25eadf8c737a6128827a1e36058fba237f1d2"
     }
   ]
 }

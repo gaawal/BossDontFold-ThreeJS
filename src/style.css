@@ -113,3 +113,50 @@
  .world-label.employee-label span{font-size:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
  .world-label.employee-label.selected{font-size:inherit;padding:4px 6px}
 }
+
+/* v1.3：参考经营手游概念图的竖屏信息层级与卡通质感。 */
+@media(max-width:700px){
+ :root{--ui-cream:#fffaf0;--ui-ink:#263a4b;--ui-yellow:#ffd45a;--ui-blue:#2c92f5;--ui-orange:#ff8a1d;--ui-green:#39b867}
+ body{background:linear-gradient(#63727d 0 29%,#e4c39d 55%,#f7eddb 100%);color:var(--ui-ink)}
+ .game-shell{padding:8px 8px calc(67px + env(safe-area-inset-bottom));gap:6px;background:linear-gradient(180deg,#62717c 0 31%,#d1a878 54%,#f5ead5 100%)}
+ .topbar{position:absolute;right:9px;top:10px;width:42px;height:42px;min-height:0;margin:0;z-index:12}
+ .brand,.top-actions .icon-btn:first-child{display:none}
+ .top-actions .icon-btn:last-child{width:42px;height:42px;border:0;border-radius:12px;background:#fffdf6;color:#63717b;font-size:27px;box-shadow:0 3px 0 #3746514d,0 6px 12px #23313b25}
+ .stats{height:53px;min-height:53px;margin:0;padding-right:49px;grid-template-columns:1fr 1fr 1.16fr;gap:6px}
+ .stats>div{position:relative;padding:6px 7px 5px 38px;border:0;border-radius:12px;background:var(--ui-cream);box-shadow:0 3px 0 #3f4b5357,0 5px 12px #26364020}
+ .stats>div::before{position:absolute;left:8px;top:10px;font-size:23px;line-height:1}
+ .cash-stat::before{content:'💵'}.salary-stat::before{content:'🗓️'}.date-stat::before{content:'📅'}
+ .stats span{font-size:9px;font-weight:800;color:#596674}
+ .stats strong,.date-stat strong{font-size:15px;font-weight:900;color:#0d9b51}
+ .salary-stat strong{color:#f47b22}.date-stat strong{font-size:12px;color:#24384b}
+ .monthbar{height:34px;min-height:34px;margin:0;padding:0;border:0;gap:7px}
+ #weeks{height:31px;padding:3px;background:#344656;border-radius:14px;gap:2px}
+ .week{flex:1;padding:5px 3px;text-align:center;background:transparent;color:#c5ced3;font-size:9px;font-weight:800}
+ .week.current{background:var(--ui-yellow);color:#293947;box-shadow:0 2px 0 #d99f2d}
+ .week.past{background:#557067;color:#f7f6eb}
+ .deadline{height:31px;display:grid;place-items:center;margin:0;padding:4px 7px;border:0;border-radius:10px;background:#fffaf2;color:#e93f3f;font-size:8px;font-weight:900;box-shadow:0 2px 0 #3d4b544f}
+ .workspace{gap:6px}
+ .project-sidebar{height:87px;min-height:87px}
+ #projects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;padding:0;overflow:visible}
+ .project-card{width:auto;min-width:0;max-width:none;height:87px;padding:8px 8px 6px;border:0;border-radius:12px;background:#fffaf3;box-shadow:0 3px 0 #46545d59,0 5px 12px #2a394323}
+ .project-card.selected{border:2px solid #ffd04b;box-shadow:0 3px 0 #d38f25,0 0 0 2px #fff3b5}
+ .project-name{gap:5px;margin-bottom:5px}.project-icon img{width:22px;height:22px}.project-name strong{font-size:10px;color:#203346}
+ .project-income{display:none}
+ .stage-track{justify-content:center;margin-bottom:5px}.stage-track b{display:none}.stage-track span{display:none}.stage-track .active{display:block;width:100%;padding:3px 4px;font-size:9px;text-align:center;color:#1476ce;background:#dfefff;border-radius:5px}
+ .project-card:nth-child(2) .stage-track .active{color:#18884a;background:#dff5e7}.project-card:nth-child(3) .stage-track .active{color:#e16c16;background:#ffead8}
+ .project-card>.bar{height:6px;background:#dfe3e6}.project-card .project-meta{margin-top:5px;justify-content:center}.project-card .project-meta span:first-child{font-size:8px;font-weight:800}.project-card .project-meta span:last-child{display:none}
+ .office-section{border:5px solid #b4733f;border-radius:14px;background:#f1d0a6;box-shadow:inset 0 0 0 2px #e6ae72,0 4px 0 #70482e,0 8px 18px #2a33382c}
+ .scene-header,.scene-caption{display:none}
+ #office{border-radius:8px 8px 0 0;background:#dfba8e}
+ #selected-panel{position:static!important;left:auto;right:auto;bottom:auto;height:142px;min-height:142px;padding:6px;background:#f7e8d3;pointer-events:auto}
+ .employee-detail{height:100%;display:grid;grid-template-columns:62px minmax(0,1fr);grid-template-rows:1fr 42px;align-items:center;gap:5px 9px;padding:8px;border:0;border-radius:12px;background:#fffaf2;box-shadow:0 3px 0 #bd966c,0 4px 12px #6c4d3228;backdrop-filter:none}
+ .employee-detail .avatar.large{width:62px;height:62px;font-size:43px;border-radius:17px;background:linear-gradient(145deg,#ffe6bd,#f6c68d);box-shadow:inset 0 0 0 2px #fff6dc}
+ .employee-detail .detail-main{align-self:stretch;padding-top:2px}.employee-detail .detail-name{margin:0 0 5px;gap:5px;flex-wrap:wrap}.employee-detail .detail-name strong{font-size:14px}.employee-detail .detail-name span{padding:2px 5px;border-radius:5px;background:#e5f3e6;color:#318348;font-size:8px;font-weight:800}.employee-detail .detail-name small{display:block;margin-left:auto;font-size:8px}.profile-link{padding:2px 5px;border-radius:5px;background:#edf0f2;color:#65717a;font-size:7px}
+ .employee-detail .chips{gap:4px;overflow:visible}.employee-detail .chips span{font-size:8px;padding:2px 5px}.employee-detail .vitals{margin-top:7px;gap:9px}.employee-detail .vitals label,.employee-detail .vitals b{font-size:8px;font-weight:800}.employee-detail .vitals label:first-child{color:#e95665}.employee-detail .vitals label:last-child{color:#e6a517}.employee-detail .vitals .bar{display:block;height:6px;margin-top:3px}
+ .employee-actions{grid-column:1/-1;width:100%;min-width:0;height:42px;margin:0;display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:6px}
+ .employee-actions button{padding:0 4px;border:0;border-radius:9px;color:#fff;font-size:11px;font-weight:900;box-shadow:inset 0 -3px 0 #00000018}
+ .employee-actions .primary{background:linear-gradient(#35a6ff,#2188ef)}.employee-actions .train-action{background:linear-gradient(#ff9c29,#f47a08)}.employee-actions .rest-action{background:linear-gradient(#48c976,#29a958)}
+ .bottom-nav{height:calc(63px + env(safe-area-inset-bottom));padding:5px 8px max(6px,env(safe-area-inset-bottom));background:#fffaf2f7;border:0;box-shadow:0 -3px 12px #503b2c25}
+ .bottom-nav button{font-size:9px;font-weight:800;color:#445363;border-radius:11px}.bottom-nav button.active{background:linear-gradient(135deg,#ffe57c,#ffd24c);color:#263b4b;box-shadow:inset 0 -2px 0 #e5ad2e}
+ .bottom-nav svg{width:23px;height:23px;stroke-width:2.2}
+}
