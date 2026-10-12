@@ -100,3 +100,16 @@
 }
 
 .avatar img{width:80%;height:80%;object-fit:contain}.project-icon img{width:22px;height:22px}.inline-emoji{width:20px;height:20px;vertical-align:middle}.table-avatar img{width:22px;height:22px}.event-illustration img,.result-icon img{width:70px;height:70px}
+
+/* 角色标签始终跟随对应动物：第一行姓名，第二行岗位与当前任务。 */
+.employee-label{display:grid;gap:2px;min-width:76px;text-align:center;padding:5px 8px;background:#fffef4ed;box-shadow:0 3px 10px #37503325}
+.employee-label strong{font-size:10px;line-height:1.15;color:#35574d}
+.employee-label span{font-size:8px;line-height:1.15;color:#748579}
+.employee-label.selected{z-index:6;box-shadow:0 0 0 2px #72b7c3,0 4px 12px #31525b30}
+
+@media(max-width:700px){
+ .world-label.employee-label,.world-label.employee-label:not(.selected){display:grid!important;min-width:64px;max-width:88px;padding:3px 5px;border-radius:7px}
+ .world-label.employee-label strong{font-size:8px}
+ .world-label.employee-label span{font-size:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ .world-label.employee-label.selected{font-size:inherit;padding:4px 6px}
+}
