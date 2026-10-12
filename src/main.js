@@ -46,6 +46,9 @@ function handleDrop(eid,did){selected=eid;if(did==='rest'){G.rest(state,eid);cha
 function openAssignment(eid,did){selected=eid;open('assignment',{eid,did,pid:state.selectedProject});render();}
 function modalShell(title,subtitle,body,footer='',wide=false){return `<div class="modal-backdrop"><section class="modal ${wide?'wide':''}" role="dialog" aria-modal="true" aria-label="${title}"><header class="modal-header"><div><span class="eyebrow">${subtitle}</span><h2>${title}</h2></div><button data-action="close" class="icon-btn" aria-label="关闭">×</button></header><div class="modal-body">${body}</div>${footer?`<footer class="modal-footer">${footer}</footer>`:''}</section></div>`;}
 function renderModal(){if(!modal)return;let html='';const e=state.employees.find(e=>e.id===selected);
+ if(modal.type==='team'){
+  html=modalShell('员工调配','选择员工后安排任务、休息或查看成长',`<div class="mobile-team-list">${state.employees.map(person=>`<article class="mobile-team-card ${person.id===selected?'selected':''}"><button data-employee="${person.id}" class="mobile-team-main"><span class="avatar ${person.role}">${emojis[person.animal]}</span><span><strong>${person.name} · ${G.LEVELS[person.level]}${G.ROLES[person.role]}</strong><small>${person.skills.map(x=>G.SKILLS[x]).join(' / ')} · ${G.employeeStatus(state,person)}</small></span><b>♡ ${Math.round(person.health)}</b></button><button class="small-btn" data-schedule="${person.id}">调配</button></article>`).join('')}</div>`,`<button data-action="close" class="primary">返回办公室</button>`);
+ }
  if(modal.type==='meeting'){
   const rows=state.employees.map(e=>{const p=state.projects.find(p=>p.id===e.project),f=p?G.forecast(state,p):{text:'—',risk:false};return `<tr><td><span class="table-avatar">${emojis[e.animal]}</span><strong>${e.name}</strong><small>${G.LEVELS[e.level]}${G.ROLES[e.role]}</small></td><td>${p?p.name:G.employeeStatus(state,e)}<small>${e.training?G.SKILLS[e.training.skill]+'培训':e.skills.map(x=>G.SKILLS[x]).join(' · ')}</small></td><td class="${f.risk?'warning-text':''}">${f.text}</td><td><button class="small-btn" data-schedule="${e.id}">调配</button></td></tr>`;}).join('');
   html=modalShell(`${G.DAYS[state.day%7]}早会`,'第'+(Math.floor(state.day/7)+1)+'周 · 游戏时间暂停',`<div class="meeting-banner">${icon('calendar')}<div><strong>${state.meetingReason||'查看进度，安排工作'}</strong><p>月底统一交付。调人前先看原任务与培训占用。</p></div></div><div class="table-scroll"><table><thead><tr><th>员工</th><th>当前安排</th><th>交付预测</th><th>调配</th></tr></thead><tbody>${rows}</tbody></table></div><div class="meeting-summary">${state.projects.map(p=>`<div><span>${pic(p.icon)} ${p.name}</span><b>${stageNames[p.stage]}</b><small>${G.forecast(state,p).text}</small></div>`).join('')}</div>`,`<button data-action="close" class="outline-btn">去办公室调配</button><button data-action="end-meeting" class="primary">确认并开始工作</button>`,true);
@@ -94,7 +97,7 @@ document.addEventListener('click',ev=>{const b=ev.target.closest('button');if(!b
  switch(action){
  case 'close':close();break;
  case 'help':case 'settings':case 'logs':case 'training':case 'hire':case 'upgrades':case 'bugs':open(action);break;
- case 'team':if(innerWidth<900)open('meeting');else $('#roster').scrollIntoView({behavior:'smooth'});break;
+ case 'team':if(innerWidth<900)open('team');else $('#roster').scrollIntoView({behavior:'smooth'});break;
  case 'meeting':open('meeting');break;
  case 'end-meeting':G.closeMeeting(state);close();changed();break;
  case 'pause':if(state.status!=='playing'){open('result');break;}if(state.meeting){open('meeting');break;}if(state.event){open('event');break;}if(state.deadlinePrompt){open('delivery');break;}state.paused=!state.paused;changed();break;

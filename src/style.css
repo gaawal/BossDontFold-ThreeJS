@@ -6,4 +6,97 @@
 @media(max-width:380px){#office{height:350px}.project-name strong{font-size:10px}.project-icon{font-size:12px}.stage-track{font-size:7px}.detail-name small{display:none}.week{padding:5px 6px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 
+/* Mobile game shell: keep the entire core loop in one viewport. */
+@media(max-width:700px){
+ html,body,#app{height:100%;overflow:hidden}
+ body{overscroll-behavior:none;background:#eef0e9}
+ .game-shell{height:100dvh;min-height:0;padding:8px 8px calc(67px + env(safe-area-inset-bottom));display:flex;flex-direction:column;overflow:hidden}
+ .topbar{height:39px;min-height:39px;margin:0 2px 5px}
+ .brand-symbol{width:30px;height:30px;border-radius:10px;box-shadow:0 3px 0 #234c44}
+ .brand-symbol svg{width:18px;height:18px}
+ .brand h1{font-size:16px;letter-spacing:-.5px;margin:0}
+ .brand .eyebrow{display:none}
+ .top-actions{gap:5px}
+ .top-actions .icon-btn{width:29px;height:29px;border-radius:9px;font-size:17px}
+ .top-actions svg{width:17px;height:17px}
+ .stats{height:42px;min-height:42px;margin:0 0 5px;gap:5px}
+ .stats>div{min-width:0;padding:5px 8px;border-radius:10px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:1px}
+ .stats span{margin:0;font-size:8px;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+ .stats strong,.date-stat strong{font-size:13px;line-height:1.1;white-space:nowrap}
+ .monthbar{height:27px;min-height:27px;padding:0 1px 5px;margin:0 0 5px;gap:4px}
+ #weeks{justify-content:space-between;gap:3px}
+ .week{padding:4px 7px;font-size:8px;white-space:nowrap}
+ #weeks i{display:none}
+ .deadline{padding:4px 6px;font-size:7px;white-space:nowrap}
+ .workspace{display:flex;flex:1;min-height:0;gap:5px;overflow:hidden}
+ .project-sidebar{flex:none;min-width:0}
+ .project-sidebar .section-heading,.hint-card,.project-sidebar>.outline-btn,.log-heading,#log-preview{display:none}
+ #projects{display:flex;grid-template-columns:none;gap:6px;overflow-x:auto;overflow-y:hidden;padding:1px 2px 5px;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+ #projects::-webkit-scrollbar{display:none}
+ .project-card{width:68vw;max-width:265px;min-width:210px;height:82px;flex:0 0 auto;padding:8px 10px;margin:0;border-radius:12px;scroll-snap-align:start}
+ .project-name{margin-bottom:5px}
+ .project-icon{font-size:14px}
+ .project-icon img{width:18px;height:18px}
+ .project-name strong{font-size:11px}
+ .project-income{display:block;font-size:8px}
+ .stage-track{font-size:7px;gap:3px;margin-bottom:5px}
+ .stage-track span{padding:2px 5px}
+ .project-meta{display:flex;font-size:8px;margin-top:5px;line-height:1.2}
+ .project-meta>span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ .office-section{position:relative;display:flex;flex:1;min-height:0;flex-direction:column;border-radius:13px}
+ .scene-header{height:33px;min-height:33px;padding:6px 9px;font-size:8px}
+ .scene-controls button{height:24px;min-width:29px}
+ #office{height:auto;min-height:0;flex:1}
+ .world-label.zone-label{font-size:7px;padding:3px 6px;letter-spacing:1px}
+ .world-label.zone-label.training,.world-label.zone-label.rest,.world-label.zone-label.waiting{display:none!important}
+ .world-label.employee-label:not(.selected),.world-label.desk-label.occupied{display:none!important}
+ .world-label.employee-label.selected{font-size:7px;padding:3px 5px;z-index:4}
+ .world-label.desk-label{font-size:0;padding:0;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:#fffdf0dc}
+ .world-label.desk-label::after{content:'+';font-size:14px;line-height:1;color:#719067}
+ .scene-caption{height:35px;min-height:35px;padding:5px 8px;font-size:7px}
+ .scene-caption>span{max-width:65%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ .scene-caption button{padding:5px 8px;font-size:8px}
+ #selected-panel{position:absolute;left:7px;right:7px;bottom:40px;z-index:8;pointer-events:none}
+ .employee-detail{pointer-events:auto;padding:7px 8px;gap:7px;flex-wrap:nowrap;border:1px solid #d8dfcf;border-radius:13px;background:#fffdf6ee;box-shadow:0 8px 24px #304b3c2e;backdrop-filter:blur(8px)}
+ .employee-detail .avatar.large{width:35px;height:38px;font-size:23px;border-radius:10px}
+ .employee-detail .detail-name{margin-bottom:3px;gap:4px;flex-wrap:nowrap}
+ .employee-detail .detail-name strong{font-size:11px}
+ .employee-detail .detail-name span{font-size:8px;white-space:nowrap}
+ .employee-detail .detail-name small{display:none}
+ .employee-detail .chips{flex-wrap:nowrap;overflow:hidden}
+ .employee-detail .chips span{font-size:7px;padding:1px 4px;white-space:nowrap}
+ .employee-detail .vitals{margin-top:4px;gap:6px}
+ .employee-detail .vitals label,.employee-detail .vitals b{font-size:7px}
+ .employee-detail .vitals .bar{display:none}
+ .employee-actions{width:116px;min-width:116px;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:4px}
+ .employee-actions button{padding:5px 3px;font-size:8px;border-radius:7px;white-space:nowrap}
+ .staff-sidebar{display:none}
+ .bottom-nav{height:calc(62px + env(safe-area-inset-bottom));padding:7px 5px max(7px,env(safe-area-inset-bottom));gap:0}
+ .bottom-nav button{font-size:8px;padding:4px 2px;gap:2px}
+ .bottom-nav svg{width:18px;height:18px}
+ .toast{bottom:calc(72px + env(safe-area-inset-bottom))}
+ .modal-backdrop{padding:8px;align-items:flex-end}
+ .modal{max-height:88dvh;border-radius:18px 18px 10px 10px}
+ .modal-header{padding:14px 14px 11px}
+ .modal-header h2{font-size:18px}
+ .modal-body{padding:12px 14px}
+ .modal-footer{padding:10px 14px 14px}
+ .mobile-team-list{display:grid;gap:7px}
+ .mobile-team-card{display:flex;align-items:center;gap:6px;padding:7px;border:1px solid #dde4d7;border-radius:12px;background:#f7f9f1}
+ .mobile-team-card.selected{border-color:#82ac96;background:#edf4e7}
+ .mobile-team-main{display:flex;align-items:center;gap:8px;min-width:0;flex:1;text-align:left;background:transparent;padding:0}
+ .mobile-team-main .avatar{width:36px;height:38px;font-size:24px;border-radius:10px}
+ .mobile-team-main>span:nth-child(2){min-width:0;flex:1}
+ .mobile-team-main strong{display:block;font-size:11px}
+ .mobile-team-main small{display:block;margin-top:3px;color:#84947d;font-size:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ .mobile-team-main b{font-size:8px;font-weight:500;color:#7d9576;white-space:nowrap}
+}
+
+@media(max-width:380px){
+ .project-card{min-width:196px;width:72vw}
+ .brand h1{font-size:15px}
+ .employee-actions{width:105px;min-width:105px}
+ .employee-actions button{font-size:7px}
+}
+
 .avatar img{width:80%;height:80%;object-fit:contain}.project-icon img{width:22px;height:22px}.inline-emoji{width:20px;height:20px;vertical-align:middle}.table-avatar img{width:22px;height:22px}.event-illustration img,.result-icon img{width:70px;height:70px}
